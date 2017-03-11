@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var totalStockLabel: UILabel!
     var products = [
         ("Kayak", "A boat for one person", "Watersports", 275.0, 10),
         ("Lifejacket", "Protective and fashionable", "Watersports", 48.95, 14),
@@ -24,10 +25,16 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        displayStockTotal()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func displayStockTotal() {
+        let stockTotal = products.reduce(0, {(total, product) -> Int in return total + product.4})
+        totalStockLabel.text = "\(stockTotal) Products in Stock"
     }
 }
 
