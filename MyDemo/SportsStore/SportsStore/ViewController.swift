@@ -8,9 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ProductTableCell: UITableViewCell {
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var stockStepper: UIStepper!
+    @IBOutlet weak var stockField: UITextField!
+}
+
+class ViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var totalStockLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     var products = [
         ("Kayak", "A boat for one person", "Watersports", 275.0, 10),
         ("Lifejacket", "Protective and fashionable", "Watersports", 48.95, 14),
@@ -31,6 +40,23 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return products.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let product = products[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell")
+            as! ProductTableCell
+        cell.nameLabel.text = product.0
+        cell.descriptionLabel.text = product.1
+        cell.stockStepper.value = Double(product.4)
+        cell.stockField.text = String(product.4)
+        return cell
+    }
+    
+
     
     func displayStockTotal() {
         let stockTotal = products.reduce(0, {(total, product) -> Int in return total + product.4})

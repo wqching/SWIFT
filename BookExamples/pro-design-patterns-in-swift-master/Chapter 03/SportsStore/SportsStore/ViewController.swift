@@ -61,14 +61,14 @@ class ViewController: UIViewController, UITableViewDataSource {
             while (true) {
                 currentCell = currentCell.superview!;
                 if let cell = currentCell as? ProductTableCell {
-                    if let id = cell.productId? {
+                    if let id = cell.productId {
                     
                         var newStockLevel:Int?;
                         
                         if let stepper = sender as? UIStepper {
                             newStockLevel = Int(stepper.value);
                         } else if let textfield = sender as? UITextField {
-                            if let newValue = textfield.text.toInt()? {
+                            if let newValue = Int(textfield.text!) {
                                 newStockLevel = newValue;
                             }
                         }
