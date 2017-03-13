@@ -36,7 +36,7 @@
                                 <rect key="frame" x="20" y="28" width="728" height="924"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="111" id="AtC-aX-Xmw" customClass="ProductTableCell" customModule="SportsStoreTwo">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Product Table Cell" rowHeight="111" id="AtC-aX-Xmw" customClass="ProductTableCell" customModule="SportsStoreTwo" colorLabel="IBBuiltInLabel-Blue">
                                         <rect key="frame" x="0.0" y="28" width="728" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AtC-aX-Xmw" id="Q2o-Yx-i78">

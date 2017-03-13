@@ -48,8 +48,9 @@ class ViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let product = products[indexPath.row];
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell")
-            as ProductTableCell;
+        //这个地方的 withIdentifier 是 identifier,一定要注意
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Product Table Cell")
+            as! ProductTableCell;
         cell.nameLabel.text = product.0;
         cell.descriptionLabel.text = product.1;
         cell.stockStepper.value = Double(product.4);

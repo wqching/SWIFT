@@ -102,8 +102,40 @@ var ff = Fullname(firstName: "Chan", secondName: "Wenqiang", salary: 440)
     ff.fullName()
 
 
+//创建一个 (Int, Int) -> (Int) 类型的闭包常量：addCloser1
+let addCloser1: (Int, Int) -> (Int)
+//为已经创建好的常量 addCloser1 赋值
+addCloser1 = {
+    (num1, num2) in
+    return num1 + num2
+}
+//调用闭包并接受返回值
+let result = addCloser1(20, 10)
 
 
+var add = {
+    (a: Int, b: Int) -> Int in
+    return a + b
+}(11, 33)
+
+
+//var resultTwo = add(1, 33)
+
+var isOK = {
+    (strOne: String, strTwo: String) -> Bool in
+    return strOne > strTwo
+}
+
+
+var isPass = isOK("c", "b")
+
+
+let names = ["Linda", "Cindy", "Benty", "Dandy"]
+
+
+let names1 = ["Linda", "Cindy", "Benty", "Dandy"]
+sortNames = names1.sorted(by: { (s1: String, s2: String) -> Bool in return s1 < s2 } )
+print(sortNames)
 
 
 
