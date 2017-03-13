@@ -14,12 +14,15 @@ class ProductTableCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var stockStepper: UIStepper!
     @IBOutlet weak var stockField: UITextField!
+    
+    var productId: Int?
 }
 
 class ViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var totalStockLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+   
     
     var products = [
         ("Kayak", "A boat for one person", "Watersports", 275.0, 10),
@@ -50,12 +53,43 @@ class ViewController: UIViewController, UITableViewDataSource {
         let product = products[indexPath.row];
         //这个地方的 withIdentifier 是 identifier,一定要注意
         let cell = tableView.dequeueReusableCell(withIdentifier: "Product Table Cell")
-            as! ProductTableCell;
+            as! ProductTableCell
+        cell.productId = indexPath.row
         cell.nameLabel.text = product.0;
         cell.descriptionLabel.text = product.1;
         cell.stockStepper.value = Double(product.4);
         cell.stockField.text = String(product.4);
         return cell;
+    }
+    
+    @IBAction func stockLevelDidChange(_ sender: Any) {
+        if var currentCell = sender as? UIView {
+            while (true) {
+                currentCell = currentCell.superview!;
+                if let cell = currentCell as? ProductTableCell {
+                    if let id = cell.productId {
+                        
+                        var newStockLevel:Int?;
+                        
+                        if let stepper = sender as? UIStepper {
+                            newStockLevel = Int(stepper.value);
+                        } else if let textfield = sender as? UITextField {
+                            if let newValue = Int(textfield.text!) {
+                                newStockLevel = newValue
+                            }
+                        }
+                        
+                        if let level = newStockLevel {
+                            products[id].4 = level;
+                            cell.stockStepper.value = Double(level);
+                            cell.stockField.text = String(level);
+                        }
+                    }
+                    break;
+                }
+            }
+            displayStockTotal();
+        }
     }
     
     func displayStockTotal() {
