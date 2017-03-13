@@ -1,4 +1,4 @@
-//
+
 //  ViewController.swift
 //  SportsStoreTwo
 //
@@ -93,6 +93,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     func displayStockTotal() {
+        //array.reduce()方法返回数组中每5个元素的累积和，其变量tatal的初始值为0
         let stockTotal = products.reduce(0, {(total, product) -> Int in return total + product.4})
         totalStockLabel.text = "\(stockTotal) Products in stock"
     }

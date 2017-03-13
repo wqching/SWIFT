@@ -2,14 +2,13 @@
 
 import UIKit
 
-var value = 50
-print(value)
-func increment(value: inout Int, length: Int = 10) {
-    value += length
+var str = "Hello, playground"
+
+var arrTest = [1, 2, 3, 4, 5]
+
+
+let result3 = arrTest.reduce(0){
+    $0 + $1
 }
 
-increment(value: &value)
-print(value)
-
-
-
+print(result3)
