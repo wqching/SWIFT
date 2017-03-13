@@ -15,6 +15,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var totalStockLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    }
     var products = [
         ("Kayak", "A boat for one person", "Watersports", 275.0, 10),
         ("Lifejacket", "Protective and fashionable", "Watersports", 48.95, 14),

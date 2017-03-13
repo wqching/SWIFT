@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  SportsStore
+//  SportsStoreTwo
 //
-//  Created by chenwenqiang on 2017/3/11.
+//  Created by chenwenqiang on 2017/3/12.
 //  Copyright © 2017年 cn.readingday. All rights reserved.
 //
 
@@ -17,9 +17,10 @@ class ProductTableCell: UITableViewCell {
 }
 
 class ViewController: UIViewController, UITableViewDataSource {
-
+    
     @IBOutlet weak var totalStockLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
     var products = [
         ("Kayak", "A boat for one person", "Watersports", 275.0, 10),
         ("Lifejacket", "Protective and fashionable", "Watersports", 48.95, 14),
@@ -31,7 +32,6 @@ class ViewController: UIViewController, UITableViewDataSource {
         ("Human Chess Board", "A fun game for the family", "Chess", 75.0, 2),
         ("Bling-Bling King", "Gold-plated, diamond-studded King", "Chess", 1200.0, 4)]
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         displayStockTotal()
@@ -45,22 +45,22 @@ class ViewController: UIViewController, UITableViewDataSource {
         return products.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let product = products[indexPath.row]
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let product = products[indexPath.row];
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell")
-            as! ProductTableCell
-        cell.nameLabel.text = product.0
-        cell.descriptionLabel.text = product.1
-        cell.stockStepper.value = Double(product.4)
-        cell.stockField.text = String(product.4)
-        return cell
+            as ProductTableCell;
+        cell.nameLabel.text = product.0;
+        cell.descriptionLabel.text = product.1;
+        cell.stockStepper.value = Double(product.4);
+        cell.stockField.text = String(product.4);
+        return cell;
     }
-    
-
     
     func displayStockTotal() {
         let stockTotal = products.reduce(0, {(total, product) -> Int in return total + product.4})
-        totalStockLabel.text = "\(stockTotal) Products in Stock"
+        totalStockLabel.text = "\(stockTotal) Products in stock"
     }
+
 }
 
