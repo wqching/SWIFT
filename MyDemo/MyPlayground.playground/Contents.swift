@@ -12,3 +12,5 @@ let result3 = arrTest.reduce(0){
 }
 
 print(result3)
+
+

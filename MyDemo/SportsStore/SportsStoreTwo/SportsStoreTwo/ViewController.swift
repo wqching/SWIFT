@@ -50,16 +50,16 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let product = products[indexPath.row];
+        let product = products[indexPath.row]
         //这个地方的 withIdentifier 是 identifier,一定要注意
         let cell = tableView.dequeueReusableCell(withIdentifier: "Product Table Cell")
             as! ProductTableCell
         cell.productId = indexPath.row
-        cell.nameLabel.text = product.0;
-        cell.descriptionLabel.text = product.1;
-        cell.stockStepper.value = Double(product.4);
-        cell.stockField.text = String(product.4);
-        return cell;
+        cell.nameLabel.text = product.0
+        cell.descriptionLabel.text = product.1
+        cell.stockStepper.value = Double(product.4)
+        cell.stockField.text = String(product.4)
+        return cell
     }
     
     @IBAction func stockLevelDidChange(_ sender: Any) {
@@ -69,10 +69,10 @@ class ViewController: UIViewController, UITableViewDataSource {
                 if let cell = currentCell as? ProductTableCell {
                     if let id = cell.productId {
                         
-                        var newStockLevel:Int?;
+                        var newStockLevel:Int?
                         
                         if let stepper = sender as? UIStepper {
-                            newStockLevel = Int(stepper.value);
+                            newStockLevel = Int(stepper.value)
                         } else if let textfield = sender as? UITextField {
                             if let newValue = Int(textfield.text!) {
                                 newStockLevel = newValue
@@ -80,15 +80,15 @@ class ViewController: UIViewController, UITableViewDataSource {
                         }
                         
                         if let level = newStockLevel {
-                            products[id].4 = level;
-                            cell.stockStepper.value = Double(level);
-                            cell.stockField.text = String(level);
+                            products[id].4 = level
+                            cell.stockStepper.value = Double(level)
+                            cell.stockField.text = String(level)
                         }
                     }
-                    break;
+                    break
                 }
             }
-            displayStockTotal();
+            displayStockTotal()
         }
     }
     
@@ -97,6 +97,5 @@ class ViewController: UIViewController, UITableViewDataSource {
         let stockTotal = products.reduce(0, {(total, product) -> Int in return total + product.4})
         totalStockLabel.text = "\(stockTotal) Products in stock"
     }
-
 }
 
