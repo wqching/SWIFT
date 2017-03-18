@@ -2,7 +2,7 @@
 
 import UIKit
 
-struct Appointment {
+class Appointment {
     var name: String
     var day: String
     var place: String
@@ -26,3 +26,4 @@ secondMeet.name = "Jerry"
 secondMeet.day = "Sunday"
 secondMeet.place = "China"
 secondMeet.meetDetail()
+firstMeet.meetDetail()
